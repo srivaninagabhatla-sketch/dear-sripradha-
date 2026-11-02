@@ -161,7 +161,7 @@ const birthdayDay=2;
 
 function updateCountdown(){
  const now=new Date();
- let next=new Date(now.getFullYear(),birthdayMonth-1,birthdayDay);
+ let next=new Date(now.getFullYear(),birthdayMonth-6,birthdayDay-2);
  if(next<now) next.setFullYear(now.getFullYear()+1);
  const days=Math.ceil((next-now)/86400000);
  document.getElementById("countdown").innerText=
