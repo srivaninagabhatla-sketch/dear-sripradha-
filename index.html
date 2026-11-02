@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +37,6 @@ input[type=file]{max-width:95%;margin:12px}
 .card{background:#ffe6f1;padding:15px;border-radius:18px;margin:12px}
 #letter{display:none;background:#fff0f6;padding:20px;border-radius:20px}
 footer{padding:25px;color:#a34b83}
-#musicSection{margin-top:18px}
 #music{width:100%;margin-top:12px}
 </style>
 </head>
@@ -52,18 +52,14 @@ footer{padding:25px;color:#a34b83}
 <a href="#musicSection">Music</a>
 </nav>
 
-<!-- MUSIC PLAYER AT TOP -->
+<!-- ONLY ONE MUSIC PLAYER -->
 <section id="musicSection">
 <h2>🎵 Our Friendship Music 💗</h2>
 <p>A special song for our beautiful friendship.</p>
-
-<audio id="music" controls loop>
+<audio id="music" controls loop preload="metadata">
 <source src="Ney%20Veyrey%28KoshalWorld.Com%29.mp3" type="audio/mpeg">
 Your browser does not support audio.
 </audio>
-
-<p>Choose another song from your phone if you wish.</p>
-<input type="file" id="musicFile" accept="audio/*">
 </section>
 
 <header id="home">
@@ -136,16 +132,6 @@ document.getElementById("photos").onchange=function(){
   img.src=URL.createObjectURL(file);
   gallery.appendChild(img);
  });
-};
-
-// Music upload from phone
-document.getElementById("musicFile").onchange=function(){
- if(this.files.length>0){
-  const music=document.getElementById("music");
-  music.src=URL.createObjectURL(this.files[0]);
-  music.load();
-  music.play().catch(()=>{});
- }
 };
 
 // Secret letter
