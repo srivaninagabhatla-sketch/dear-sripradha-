@@ -129,16 +129,37 @@ Best Friends Forever 🌸
 </footer>
 
 <script>
-// Photo upload
-document.getElementById("photos").onchange=function(){
- const gallery=document.getElementById("photoGallery");
- [...this.files].forEach(file=>{
-  const img=document.createElement("img");
-  img.src=URL.createObjectURL(file);
-  gallery.appendChild(img);
- });
-};
+// Birthday Countdown - June 2
+const birthdayMonth = 6;
+const birthdayDay = 2;
 
+function updateCountdown() {
+    const now = new Date();
+    const today = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate()
+    );
+
+    let nextBirthday = new Date(
+        today.getFullYear(),
+        birthdayMonth - 1,
+        birthdayDay
+    );
+
+    if (nextBirthday <= today) {
+        nextBirthday.setFullYear(today.getFullYear() + 1);
+    }
+
+    const days = Math.ceil(
+        (nextBirthday - today) / 86400000
+    );
+
+    document.getElementById("countdown").innerText =
+        days + " days left for your special day! 🎉";
+}
+
+updateCountdown();
 // Secret letter
 function showLetter(){
  document.getElementById("letter").style.display="block";
