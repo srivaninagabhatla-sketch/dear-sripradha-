@@ -154,20 +154,38 @@ setInterval(()=>{
  document.body.appendChild(h);
  setTimeout(()=>h.remove(),5000);
 },700);
+// Birthday Countdown - June 2
+const birthdayMonth = 6;
+const birthdayDay = 2;
 
-// Birthday date
-const birthdayMonth=6;
-const birthdayDay=2;
+function updateCountdown() {
+    const now = new Date();
+    const today = new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        now.getDate()
+    );
 
-function updateCountdown(){
- const now=new Date();
- let next=new Date(now.getFullYear(),birthdayMonth-6,birthdayDay-2);
- if(next<now) next.setFullYear(now.getFullYear()+1);
- const days=Math.ceil((next-now)/86400000);
- document.getElementById("countdown").innerText=
- days+" days left for your special day! 🎉";
+    let nextBirthday = new Date(
+        today.getFullYear(),
+        birthdayMonth - 1,
+        birthdayDay
+    );
+
+    if (nextBirthday <= today) {
+        nextBirthday.setFullYear(today.getFullYear() + 1);
+    }
+
+    const days = Math.ceil(
+        (nextBirthday - today) / (1000 * 60 * 60 * 24)
+    );
+
+    document.getElementById("countdown").innerText =
+        days + " days left for your special day! 🎉";
 }
+
 updateCountdown();
+
 </script>
 
 </body>
