@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Friends Forever 💗</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;font-family:Arial,sans-serif;text-align:center;color:#663b61;
+ background:linear-gradient(135deg,#ffe1ed,#eadfff,#fff0d9);
+}
+header{padding:45px 15px}
+h1{color:#d94f91;font-size:32px}
+h2{color:#bd5798}
+p{line-height:1.7}
+section{
+ background:#ffffffb8;margin:18px auto;padding:25px 15px;
+ border-radius:25px;width:90%;max-width:650px;
+ box-shadow:0 5px 20px #d9a8d055;
+}
+button,.upload{
+ background:#e879ad;color:white;border:0;padding:12px 20px;
+ border-radius:25px;margin:8px;cursor:pointer;font-size:15px;
+}
+button:hover,.upload:hover{background:#aa75d5}
+nav{padding:12px;background:#ffffffa8;position:sticky;top:0}
+nav a{color:#a84c88;text-decoration:none;margin:8px;font-weight:bold}
+.gallery{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.gallery img{width:130px;height:130px;object-fit:cover;border-radius:18px}
+input[type=file]{max-width:95%;margin:12px}
+.heart{position:fixed;bottom:-30px;animation:float 5s linear infinite;pointer-events:none}
+@keyframes float{to{transform:translateY(-110vh) rotate(360deg);opacity:0}}
+.card{background:#ffe6f1;padding:15px;border-radius:18px;margin:12px}
+#letter{display:none;background:#fff0f6;padding:20px;border-radius:20px}
+footer{padding:25px;color:#a34b83}
+</style>
+</head>
+
+<body>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#gallery">Gallery</a>
+<a href="#memories">Memories</a>
+<a href="#letter">Letter</a>
+</nav>
+
+<header id="home">
+<h1>💗 Forever & Always 💗</h1>
+<h2>For My Dearest Sripradha</h2>
+<p>Some friendships are not made by blood,<br>
+they are made by heart. 🥰</p>
+</header>
+
+<section id="about">
+<h2>🌸 My Special Friend</h2>
+<p>Dear Sripradha, you are not just a friend.
+You are a beautiful part of my life.
+Thank you for every smile, every memory
+and every moment. Our friendship is forever! 💕</p>
+</section>
+
+<section id="gallery">
+<h2>📸 Our Beautiful Memories</h2>
+<p>Upload your favourite friendship photos here.</p>
+<input type="file" id="photos" accept="image/*" multiple>
+<div class="gallery" id="photoGallery"></div>
+</section>
+
+<section id="memories">
+<h2>🌷 Friendship Timeline</h2>
+<div class="card">💗 The Beginning — A beautiful friendship started.</div>
+<div class="card">😂 Crazy Moments — Endless laughter and fun.</div>
+<div class="card">🤗 Together Forever — Memories that never fade.</div>
+</section>
+
+<section>
+<h2>💌 A Little Secret Letter</h2>
+<button onclick="showLetter()">Open Your Letter 💗</button>
+<div id="letter">
+<p>Dear Sripradha,</p>
+<p>Life lo entha mandi friends vachina,
+nee place matram special.
+Kashtam lo dhairyam ga, santosham lo
+navvulaga undే nee friendship naaku
+eppatiki precious. Distance entha unna,
+mana friendship eppatiki maradhu. ❤️</p>
+<p>Forever your friend! 🌸</p>
+</div>
+</section>
+
+<section>
+<h2>🎵 Our Friendship Music</h2>
+<p>Choose a song from your phone.</p>
+<input type="file" id="musicFile" accept="audio/*">
+<audio id="music" controls style="width:100%"></audio>
+</section>
+
+<section>
+<h2>🎂 Birthday Countdown</h2>
+<p id="countdown">Set your special birthday date in the code.</p>
+</section>
+
+<section>
+<h2>💝 One Last Thing...</h2>
+<button onclick="alert('You are my forever friend, Sripradha! 💗')">
+Click for a Surprise
+</button>
+</section>
+
+<footer>
+Made with endless love 💕<br>
+Best Friends Forever 🌸
+</footer>
+
+<script>
+// Photo upload
+document.getElementById("photos").onchange=function(){
+ const gallery=document.getElementById("photoGallery");
+ [...this.files].forEach(file=>{
+  const img=document.createElement("img");
+  img.src=URL.createObjectURL(file);
+  gallery.appendChild(img);
+ });
+};
+
+// Music upload
+document.getElementById("musicFile").onchange=function(){
+ document.getElementById("music").src=URL.createObjectURL(this.files[0]);
+};
+
+// Secret letter
+function showLetter(){
+ document.getElementById("letter").style.display="block";
+}
+
+// Floating hearts
+setInterval(()=>{
+ const h=document.createElement("div");
+ h.className="heart";
+ h.innerHTML=["💗","💕","🌸","💖"][Math.floor(Math.random()*4)];
+ h.style.left=Math.random()*100+"vw";
+ h.style.fontSize="24px";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),5000);
+},700);
+
+// Birthday date: change month and day below
+const birthdayMonth=6; // June = 2
+const birthdayDay=2;
+
+function updateCountdown(){
+ const now=new Date();
+ let next=new Date(now.getFullYear(),birthdayMonth-1,birthdayDay);
+ if(next<now) next.setFullYear(now.getFullYear()+1);
+ const days=Math.ceil((next-now)/86400000);
+ document.getElementById("countdown").innerText=
+ days+" days left for your special day! 🎉";
+}
+updateCountdown();
+</script>
+
+</body>
+</html>
