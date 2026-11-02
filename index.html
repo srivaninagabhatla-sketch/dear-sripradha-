@@ -127,86 +127,50 @@ Click for a Surprise
 Made with endless love 💕<br>
 Best Friends Forever 🌸
 </footer>
-
 <script>
-// Birthday Countdown - June 2
-const birthdayMonth = 6;
-const birthdayDay = 2;
-
-function updateCountdown() {
-    const now = new Date();
-    const today = new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate()
-    );
-
-    let nextBirthday = new Date(
-        today.getFullYear(),
-        birthdayMonth - 1,
-        birthdayDay
-    );
-
-    if (nextBirthday <= today) {
-        nextBirthday.setFullYear(today.getFullYear() + 1);
-    }
-
-    const days = Math.ceil(
-        (nextBirthday - today) / 86400000
-    );
-
-    document.getElementById("countdown").innerText =
-        days + " days left for your special day! 🎉";
-}
-
-updateCountdown();
 // Secret letter
 function showLetter(){
- document.getElementById("letter").style.display="block";
+  document.getElementById("letter").style.display="block";
 }
 
 // Floating hearts
 setInterval(()=>{
- const h=document.createElement("div");
- h.className="heart";
- h.innerHTML=["💗","💕","🌸","💖"][Math.floor(Math.random()*4)];
- h.style.left=Math.random()*100+"vw";
- h.style.fontSize="24px";
- document.body.appendChild(h);
- setTimeout(()=>h.remove(),5000);
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML=["💗","💕","🌸","💖"][Math.floor(Math.random()*4)];
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize="24px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),5000);
 },700);
+
 // Birthday Countdown - June 2
-const birthdayMonth = 6;
-const birthdayDay = 2;
+const birthdayMonth=6;
+const birthdayDay=2;
 
-function updateCountdown() {
-    const now = new Date();
-    const today = new Date(
-        now.getFullYear(),
-        now.getMonth(),
-        now.getDate()
-    );
+function updateCountdown(){
+  const now=new Date();
+  const today=new Date(now.getFullYear(),now.getMonth(),now.getDate());
 
-    let nextBirthday = new Date(
-        today.getFullYear(),
-        birthdayMonth - 1,
-        birthdayDay
-    );
+  let nextBirthday=new Date(
+    now.getFullYear(),
+    birthdayMonth-1,
+    birthdayDay
+  );
 
-    if (nextBirthday <= today) {
-        nextBirthday.setFullYear(today.getFullYear() + 1);
-    }
+  if(nextBirthday<=today){
+    nextBirthday.setFullYear(now.getFullYear()+1);
+  }
 
-    const days = Math.ceil(
-        (nextBirthday - today) / (1000 * 60 * 60 * 24)
-    );
+  const days=Math.round(
+    (nextBirthday-today)/86400000
+  );
 
-    document.getElementById("countdown").innerText =
-        days + " days left for your special day! 🎉";
+  document.getElementById("countdown").innerText=
+    days+" days left for your special day! 🎉";
 }
 
 updateCountdown();
-
 </script>
 
 </body>
